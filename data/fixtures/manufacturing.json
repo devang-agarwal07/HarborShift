@@ -1,0 +1,17 @@
+{
+  "description": "Derived, synthetic USA to South Africa to India manufacturing chain",
+  "packing_units_per_container": 10,
+  "original_raw_purchase_inr": 24000,
+  "shipments": [
+    {"shipment_id":"DEMO-RAW","product_id":"PR01","quantity_units":10,"origin_port_id":"P03","destination_port_id":"P05","date":"2027-01-01","route_id":"R04","contract_id":"DEMO-HANDOFF","deadline":"2027-01-09","late_penalty_inr_per_day":0},
+    {"shipment_id":"DEMO-FINISHED","product_id":"PR03","quantity_units":10,"origin_port_id":"P05","destination_port_id":"P11","date":"2027-01-12","route_id":"R06","contract_id":"DEMO-CUSTOMER","deadline":"2027-01-18","late_penalty_inr_per_day":5000}
+  ],
+  "tasks": [
+    {"task_id":"raw","label":"Raw material to Durban","planned_start":"2027-01-01","duration_days":7,"predecessors":[],"shipment_id":"DEMO-RAW"},
+    {"task_id":"production","label":"Manufacture parts in Durban","planned_start":"2027-01-08","duration_days":4,"predecessors":["raw"]},
+    {"task_id":"finished","label":"Finished parts to Mumbai","planned_start":"2027-01-12","duration_days":5,"predecessors":["production"],"shipment_id":"DEMO-FINISHED"},
+    {"task_id":"delivery","label":"Customer delivery in India","planned_start":"2027-01-17","duration_days":0,"predecessors":["finished"],"contract_id":"DEMO-CUSTOMER"}
+  ],
+  "production": {"task_id":"production","port_id":"P05","input_shipment_id":"DEMO-RAW","input_product_id":"PR01","output_shipment_id":"DEMO-FINISHED","output_product_id":"PR03"},
+  "local_supplier": {"supplier_id":"DEMO-LOCAL","supplier_name":"Demo Durban materials","port_id":"P05","product_id":"PR01","available_units":30,"lead_time_days":1,"unit_price_inr":1800,"qualification_status":"qualified"}
+}

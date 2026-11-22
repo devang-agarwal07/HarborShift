@@ -1,0 +1,48 @@
+{
+  "data_origin": "synthetic",
+  "version": "synthetic-delay-v1",
+  "random_seed": 42,
+  "scikit_learn_version": "1.9.0",
+  "features": [
+    "port_id",
+    "event_type",
+    "expected_duration_days",
+    "severity_1_to_5",
+    "congestion_0_to_5",
+    "planned_transit_days",
+    "schedule_buffer_days"
+  ],
+  "split_counts": {
+    "train": 1400,
+    "validation": 300,
+    "test": 300
+  },
+  "validation": {
+    "mean_baseline": {
+      "mae_days": 3.43715,
+      "rmse_days": 3.9988554091556416
+    },
+    "linear_regression": {
+      "mae_days": 1.1337862234209202,
+      "rmse_days": 1.4386589779958023
+    },
+    "random_forest": {
+      "mae_days": 1.259163888888889,
+      "rmse_days": 1.6267813164002374
+    },
+    "gradient_boosting": {
+      "mae_days": 1.1690760265489806,
+      "rmse_days": 1.501301776664089
+    }
+  },
+  "selected": "linear_regression",
+  "held_out_test": {
+    "mae_days": 1.147459746951467,
+    "rmse_days": 1.4464980855208005
+  },
+  "held_out_mean_baseline": {
+    "mae_days": 3.3168499999999996,
+    "rmse_days": 3.960781646342045
+  },
+  "model_sha256": "0d5e1d7e013e424d9926fec58a892691a506bbaa562286c7828c143e027faca6"
+}
